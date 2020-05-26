@@ -7,6 +7,6 @@ node() {
      sh "mvn clean package"
    }
    stage('Deploy') {
-      sh 'cp /var/lib/jenkins/workspace/JenkinsPipeline/target/simple-maven-project-with-tests-1.0-SNAPSHOT.jar /opt/tomcat/webapps'
+      sh 'cp /var/lib/jenkins/workspace/JenkinsPipeline/target/simple-maven-project-with-tests-1.0-SNAPSHOT.jar /opt/jar_files'
    }
 }
