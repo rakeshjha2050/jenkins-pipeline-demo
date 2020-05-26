@@ -1,0 +1,12 @@
+node() {
+   def mvnHome
+   stage('checkout code') { // for display purposes
+     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests.git']]])
+   }
+   stage('Build') {
+     sh "mvn clean package"
+   }
+   stage('Deploy') {
+      sh 'cp /var/lib/jenkins/workspace/JenkinsPipeline/target/simple-maven-project-with-tests-1.0-SNAPSHOT.jar /opt/jar_files'
+   }
+}
